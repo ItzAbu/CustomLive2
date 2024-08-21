@@ -1,0 +1,4 @@
+name: CustomLive
+version: '${project.version}'
+main: org.itzabu.customlive.CustomLive
+api-version: '1.20'
