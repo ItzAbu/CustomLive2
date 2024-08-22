@@ -14,11 +14,8 @@ public class CustomLiveCommand implements CommandExecutor {
 
     private final LuckPerms luckPerms = CustomLive.getLuckPerms();
 
-    public static final String CommandLive = "CustomLive";
+    public static final String CommandLive = "CustomLiveOn";
     public static final String COMMANDUsage = "CustomLiveOn.usage";
-    public static final String COMMANDOtherUsage = "CustomLiveOn.otherUsage";
-
-    public static final String Active = "liveon";
 
     public CustomLiveCommand(CustomLive customLive) {
         this.customLive = customLive;
@@ -81,7 +78,7 @@ public class CustomLiveCommand implements CommandExecutor {
                 }
                 User targetUser = luckPerms.getUserManager().getUser(target.getUniqueId());
 
-                if (luckpermsCommands.hasPermission(targetUser, Active)) {
+                if (luckpermsCommands.haveGroup(targetUser)) {
                     luckpermsCommands.removeGoup(targetUser);
                     sender.sendMessage("§cDisattivato a " + target.getName());
                 } else {

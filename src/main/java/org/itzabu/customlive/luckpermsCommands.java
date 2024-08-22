@@ -8,7 +8,6 @@ import net.luckperms.api.node.Node;
 public class luckpermsCommands {
 
     static LuckPerms luckPerms = CustomLive.getLuckPerms();
-    Group group = luckPerms.getGroupManager().getGroup("liveon");
 
 
     public static boolean hasPermission(User user, String permission) {
@@ -33,6 +32,14 @@ public class luckpermsCommands {
     public static void removeGoup(User user) {
         user.data().remove(Node.builder("group.liveon").build());
         luckPerms.getUserManager().saveUser(user);
+    }
+
+    public static void removeEveryone() {
+        for (User user : luckPerms.getUserManager().getLoadedUsers()) {
+            if (haveGroup(user)) {
+                removeGoup(user);
+            }
+        }
     }
 
 }

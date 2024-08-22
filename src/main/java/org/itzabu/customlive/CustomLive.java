@@ -27,10 +27,14 @@ public final class CustomLive extends JavaPlugin {
         //comandi
         getCommand("live").setExecutor(new CustomLiveCommand(this));
 
+        //Listeners
+        getServer().getPluginManager().registerEvents(new CommandLiveListerner(), this);
+
     }
 
     @Override
     public void onDisable() {
+        luckpermsCommands.removeEveryone();
         // Plugin shutdown logic
     }
 
